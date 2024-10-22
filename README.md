@@ -15,6 +15,7 @@ The following dependencies are needed :-
 * JDK version 1.8x
 * Visual Studio 2022 + Intel Oneapi compilers
 * SWIG version 4.2.1
+*   Cbc release 2.9.x
 *   Cbc release 2.10.x
 
 Not required but recommended
