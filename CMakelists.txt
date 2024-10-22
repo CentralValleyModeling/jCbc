@@ -1,11 +1,13 @@
-cmake_minimum_required(VERSION 3.12)
+cmake_minimum_required(VERSION 3.30.3)
 project(jCbc)
 
 # Set variables
-set(Java_Path "C:/Program Files/Java/jdk1.8.0_202")
-set(COIN_OR_ROOT "C:/Users/nsandhu/dev/coinbrew")
-set(CBC_Path "${COIN_OR_ROOT}/Cbc/Cbc")
-set(CBC_Lib "${CBC_Path}/MSVisualStudio/v17/x64/Release")
+set(Java_Path "C:/Program Files/Java/jdk-1.8")
+set(JAVA_HOME ${Java_Path})
+set(COIN_OR_ROOT "C:/dev_cbc/coinbrew")
+set(CBC_Path "${COIN_OR_ROOT}/Cbc")
+set(CBC_Lib "${CBC_Path}/MSVisualStudio/v10/x64-v143-Release")
+
 set(JCBC_PKG src)
 # Find SWIG
 find_package(SWIG REQUIRED)
@@ -24,7 +26,7 @@ set_property(SOURCE jCbc.i PROPERTY SWIG_MODULE_NAME jCbc)
 # Generate SWIG wrapper
 set(SWIG_OUTFILE_DIR ${CMAKE_CURRENT_BINARY_DIR}/src)
 file(MAKE_DIRECTORY ${SWIG_OUTFILE_DIR})
-set(CMAKE_SWIG_FLAGS -c++ -package src -outdir ${SWIG_OUTFILE_DIR})
+set(CMAKE_SWIG_FLAGS -c++ -package org.coinor.cbc -outdir ${SWIG_OUTFILE_DIR})
 swig_add_library(jCbc
     TYPE SHARED
     LANGUAGE java
@@ -37,31 +39,31 @@ target_include_directories(jCbc PRIVATE
     ${Java_Path}/include
     ${Java_Path}/include/win32
     ${COIN_OR_ROOT}/../src
-    ${COIN_OR_ROOT}/Cbc/Cbc/src
+    ${COIN_OR_ROOT}/Cbc/src
     ${COIN_OR_ROOT}/Cbc/Cbc/src/OsiCbc
-    ${COIN_OR_ROOT}/Cgl/Cgl/src
-    ${COIN_OR_ROOT}/Cgl/Cgl/src/CglClique
-    ${COIN_OR_ROOT}/Cgl/Cgl/src/CglDuplicateRow
-    ${COIN_OR_ROOT}/Cgl/Cgl/src/CglOddHole
-    ${COIN_OR_ROOT}/Cgl/Cgl/src/CglFlowCover
-    ${COIN_OR_ROOT}/Cgl/Cgl/src/CglGMI
-    ${COIN_OR_ROOT}/Cgl/Cgl/src/CglGomory
-    ${COIN_OR_ROOT}/Cgl/Cgl/src/CglKnapsackCover
-    ${COIN_OR_ROOT}/Cgl/Cgl/src/CglLandP
-    ${COIN_OR_ROOT}/Cgl/Cgl/src/CglMixedIntegerRounding
-    ${COIN_OR_ROOT}/Cgl/Cgl/src/CglMixedIntegerRounding2
-    ${COIN_OR_ROOT}/Cgl/Cgl/src/CglPreProcess
-    ${COIN_OR_ROOT}/Cgl/Cgl/src/CglProbing
-    ${COIN_OR_ROOT}/Cgl/Cgl/src/CglRedSplit
-    ${COIN_OR_ROOT}/Cgl/Cgl/src/CglRedSplit2
-    ${COIN_OR_ROOT}/Cgl/Cgl/src/CglResidualCapacity
-    ${COIN_OR_ROOT}/Cgl/Cgl/src/CglSimpleRounding
-    ${COIN_OR_ROOT}/Cgl/Cgl/src/CglTwomir
-    ${COIN_OR_ROOT}/Cgl/Cgl/src/CglZeroHalf
-    ${COIN_OR_ROOT}/Clp/Clp/src
-    ${COIN_OR_ROOT}/Clp/Clp/src/OsiClp
-    ${COIN_OR_ROOT}/Osi/Osi/src/Osi
-    ${COIN_OR_ROOT}/CoinUtils/CoinUtils/src
+    ${COIN_OR_ROOT}/Cgl/src
+    ${COIN_OR_ROOT}/Cgl/src/CglClique
+    ${COIN_OR_ROOT}/Cgl/src/CglDuplicateRow
+    ${COIN_OR_ROOT}/Cgl/src/CglOddHole
+    ${COIN_OR_ROOT}/Cgl/src/CglFlowCover
+    ${COIN_OR_ROOT}/Cgl/src/CglGMI
+    ${COIN_OR_ROOT}/Cgl/src/CglGomory
+    ${COIN_OR_ROOT}/Cgl/src/CglKnapsackCover
+    ${COIN_OR_ROOT}/Cgl/src/CglLandP
+    ${COIN_OR_ROOT}/Cgl/src/CglMixedIntegerRounding
+    ${COIN_OR_ROOT}/Cgl/src/CglMixedIntegerRounding2
+    ${COIN_OR_ROOT}/Cgl/src/CglPreProcess
+    ${COIN_OR_ROOT}/Cgl/src/CglProbing
+    ${COIN_OR_ROOT}/Cgl/src/CglRedSplit
+    ${COIN_OR_ROOT}/Cgl/src/CglRedSplit2
+    ${COIN_OR_ROOT}/Cgl/src/CglResidualCapacity
+    ${COIN_OR_ROOT}/Cgl/src/CglSimpleRounding
+    ${COIN_OR_ROOT}/Cgl/src/CglTwomir
+    ${COIN_OR_ROOT}/Cgl/src/CglZeroHalf
+    ${COIN_OR_ROOT}/Clp/src
+    ${COIN_OR_ROOT}/Clp/src/OsiClp
+    ${COIN_OR_ROOT}/Osi/src/Osi
+    ${COIN_OR_ROOT}/CoinUtils/src
     ${COIN_OR_ROOT}/pthreads
 )
 # Compiler flags
