@@ -18,14 +18,26 @@ The following dependencies are needed :-
 *   Cbc release 2.9.x
 *   Cbc release 2.10.x
 
+
 Not required but recommended
 * Cmake version 3.30+
 * Git
 * VSCode
+# Updating the source code:
+Before running the compilation process, the updated codes should be used for Cbc and Osi src codes.
+The initial archived source codes and any specific version of Cbc versions with their dependencies have been archived in the following page:
+[Index of /download/source/Cbc](https://www.coin-or.org/download/source/Cbc/)
+and the repositories for updated Cbc and Osi src codes under CentralValleyModeling are as follows:
+https://github.com/CentralValleyModeling/Cbc.git
+https://github.com/CentralValleyModeling/Osi.git
 
 # Compilation
 
+
+
  run_cmake.bat for details and CMakeLists.txt may need to be changed to your install locations and dependencies.
+
+ 
 
  Once run_cmake.bat is run it will create a solution file jCbc.sln in the build folder. Visual Studio can then use SWIG to generate the wrappers for C++ and Java and compile the code into jCbc.dll
 
